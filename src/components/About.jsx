@@ -1,16 +1,33 @@
+import { useState, useEffect } from 'react';
 import headshot from '../assets/jaydon_headshot.jpg';
 import carmel_logo from '../assets/carmel_logo.png';
 import iu_logo from '../assets/indiana_logo.png';
 import miami_logo from '../assets/miami_logo.png';
 
 export default function About() {
+    const [showMore, setShowMore] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 640); // sm breakpoint
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
     return (
-        <section id="about" className="relative flex justify-center px-4 py-10 bg-white" data-aos="fade-up">
+        <section
+            id="about"
+            className="relative flex justify-center px-4 py-10 bg-white"
+            data-aos="fade-up"
+        >
             {/* Background + Foreground Card */}
-            <div className="relative max-w-md md:max-w-4xl lg:max-w-5xl w-full">
+            <div className="relative w-full max-w-4xl md:max-w-5xl mx-auto px-2 sm:px-4">
                 {/* Background Card */}
-                <div className="absolute inset-0 bg-[#FFBE06] shadow-lg rounded-[20px] -translate-x-4 translate-y-4"></div>
+                <div className="absolute -inset-2 bg-[#FFBE06] shadow-lg rounded-[20px]"></div>
 
                 {/* Foreground Card */}
                 <div
@@ -41,19 +58,34 @@ export default function About() {
                             University.
                         </p>
 
-                        <p>
-                            I wasn’t always the top student, but I’ve learned that hard work and patience go a long way —
-                            and that’s the mindset I bring to every session. I connect well with students of all ages and
-                            enjoy making learning{' '}
-                            <span className="font-semibold text-[#042D71]">less stressful and more rewarding</span>.
-                        </p>
+                        {/* Conditionally show paragraphs on mobile */}
+                        {(showMore || !isMobile) && (
+                            <>
+                                <p className="mb-4">
+                                    I wasn’t always the top student, but I’ve learned that hard work and patience go a long way —
+                                    and that’s the mindset I bring to every session. I connect well with students of all ages and
+                                    enjoy making learning{' '}
+                                    <span className="font-semibold text-[#042D71]">less stressful and more rewarding</span>.
+                                </p>
 
-                        <p>
-                            I'm proud to work as a paid{' '}
-                            <span className="font-semibold text-[#042D71]">academic tutor at Miami University</span>, where I
-                            support fellow students in math and science courses. My goal is to create a space where
-                            students feel supported, encouraged, and capable of doing their best.
-                        </p>
+                                <p className="mb-4">
+                                    I'm proud to work as a paid{' '}
+                                    <span className="font-semibold text-[#042D71]">academic tutor at Miami University</span>, where I
+                                    support fellow students in math and science courses. My goal is to create a space where
+                                    students feel supported, encouraged, and capable of doing their best.
+                                </p>
+                            </>
+                        )}
+
+                        {/* Toggle button only on mobile */}
+                        {isMobile && (
+                            <button
+                                className="text-[#042D71] font-semibold underline mt-2 w-fit"
+                                onClick={() => setShowMore(!showMore)}
+                            >
+                                {showMore ? 'Read Less...' : 'Read More...'}
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

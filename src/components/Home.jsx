@@ -2,7 +2,7 @@ import tutoring_pic from "../assets/tutoring_home.jpg"
 
 export default function Home() {
     return (
-        <section id="home" className="relative bg-white py-40 px-20 overflow-hidden" data-aos="fade-up">
+        <section id="home" className="relative bg-white py-24 md:py-40 px-5 md:px-20 overflow-hidden" data-aos="fade-up">
 
             {/* Gradient */}
             <svg className="absolute w-0 h-0">
@@ -16,7 +16,7 @@ export default function Home() {
 
             {/* Background Blobs */}
             <div
-                className="absolute bottom-20 left-50 -translate-x-1/2 w-[700px] md:w-[800px] pointer-events-none z-0">
+                className="absolute bottom-12 left-50 -translate-x-1/2 w-[500px] md:w-[800px] pointer-events-none z-0">
                 <svg id="leftBlob" viewBox="0 0 900 600" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
                     <g transform="translate(450 400)">
@@ -27,7 +27,7 @@ export default function Home() {
                 </svg>
             </div>
             <div
-                className="absolute top-0 md:-top-5 left-1/2 -translate-x-1/2 w-[700px] md:w-[1000px] pointer-events-none z-0">
+                className="absolute top-10 md:-top-5 left-1/2 -translate-x-1/2 w-[500px] md:w-[1000px] pointer-events-none z-0">
                 <svg id="topBlob" viewBox="0 0 900 600" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
                     <g transform="translate(450 200)">
@@ -38,7 +38,7 @@ export default function Home() {
                 </svg>
             </div>
 
-            <div className="absolute bottom-0 right-0 translate-x-1/3 w-[500px] md:w-[600px] lg:w-[700px] pointer-events-none z-0">
+            <div className="absolute -bottom-10 md:bottom-0 right-0 translate-x-1/3 w-[400px] md:w-[600px] lg:w-[700px] pointer-events-none z-0">
                 <svg id="rightBlob" viewBox="0 0 900 900" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
                     <g transform="translate(450 400)">
@@ -50,16 +50,16 @@ export default function Home() {
             </div>
 
             {/* Main Card */}
-            <div className="relative max-w-6xl mx-auto z-10 bg-[#f5f5f5] px-20 py-20 flex flex-col rounded-[15px] md:flex-row
+            <div className="relative max-w-6xl mx-auto z-10 bg-[#f5f5f5] px-0 md:px-20 py-20 flex flex-col rounded-[15px] md:flex-row
                             items-center justify-between shadow">
                 {/* Text Content */}
                 <div className="w-full md:w-1/2 text-center md:text-left">
                     {/* Grouped heading + subtext */}
                     <div className="space-y-2">
-                        <h1 className="text-5xl lg:text-6xl font-extrabold text-gray-900 font-antonio">
+                        <h1 className="text-3xl lg:text-6xl font-extrabold text-gray-900 font-antonio">
                             Carmel Tutoring
                         </h1>
-                        <p className="text-xl sm:text-2xl text-gray-600 font-karla">
+                        <p className="text-md sm:text-2xl text-gray-600 font-karla">
                             Tutoring that meets kids where they are
                         </p>
                     </div>

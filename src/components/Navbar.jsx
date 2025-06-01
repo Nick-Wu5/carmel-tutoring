@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import logo from '../assets/logo.png';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef(null);
 
     // Consolidated nav link style with underline roll-out effect
     const linkStyle = `
@@ -12,6 +13,19 @@ export default function Navbar() {
         after:transition-all after:duration-300 after:ease-in-out
         hover:after:w-full
     `;
+
+    // Close menu on outside click
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <nav className="top-0 z-50 w-full bg-white shadow">
@@ -49,14 +63,15 @@ export default function Navbar() {
 
             {/* Mobile Dropdown Panel */}
             <div
+                ref={menuRef}
                 className={`fixed top-16 right-0 h-[calc(100vh-4rem)] w-48 bg-white shadow-lg transform transition-transform
                 duration-300 ease-in-out z-40 lg:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
-                <ul className="flex flex-col px-6 pb-4 space-y-3 font-karla text-sm">
-                    <li><a href="#about" className={linkStyle}>About Me</a></li>
-                    <li><a href="#classes" className={linkStyle}>View Classes</a></li>
-                    <li><a href="#classes" className={linkStyle}>FAQs</a></li>
-                    <li><a href="#book" className={linkStyle}>Book Now</a></li>
+                <ul className="flex flex-col px-6 pb-4 space-y-3 font-karla text-lg">
+                    <li><a href="#about" className={linkStyle} onClick={() => setIsOpen(false)}>About Me</a></li>
+                    <li><a href="#classes" className={linkStyle} onClick={() => setIsOpen(false)}>View Classes</a></li>
+                    <li><a href="#classes" className={linkStyle} onClick={() => setIsOpen(false)}>FAQs</a></li>
+                    <li><a href="#book" className={linkStyle} onClick={() => setIsOpen(false)}>Book Now</a></li>
                 </ul>
             </div>
         </nav>

@@ -31,27 +31,29 @@ function App() {
         AOS.refresh();
     }, []);
 
+    const sectionCSS = "md:mb-20";
+
     return (
         <div className="min-h-screen flex flex-col">
-            <section className="mb-10">
+            <section className="mb-1">
                 <Navbar />
             </section>
 
                 <main className="flex-grow">
 
-                    <section id="home" className="mb-10">
+                    <section id="home" className="md:mb-0">
                         <Home />
                     </section>
 
-                    <section id="about" className="mb-10">
+                    <section id="about" className={sectionCSS}>
                         <About />
                     </section>
 
-                    <section id="classes" className="mt-20">
+                    <section id="classes" className={sectionCSS}>
                         <BrowseClasses />
                     </section>
 
-                    <section id="book" className="mt-20"s>
+                    <section id="book" className={sectionCSS}>
                         <BookForm />
                     </section>
 
