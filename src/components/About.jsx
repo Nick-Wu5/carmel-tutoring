@@ -27,7 +27,7 @@ export default function About() {
             {/* Background + Foreground Card */}
             <div className="relative w-full max-w-4xl md:max-w-5xl mx-auto px-2 sm:px-4">
                 {/* Background Card */}
-                <div className="absolute -inset-2 bg-[#FFBE06] shadow-lg rounded-[20px]"></div>
+                <div className="absolute top-0 left-0 right-8 bottom-0 translate-y-2 md:translate-y-4 bg-[#FFBE06] shadow-lg rounded-[20px]"></div>
 
                 {/* Foreground Card */}
                 <div
